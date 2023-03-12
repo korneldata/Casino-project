@@ -1,6 +1,3 @@
-use casino
-select * from preferences
-
 -- I. DATA CLEANING
 
 --removing duplicate columns
@@ -79,32 +76,6 @@ on pr.player_id = pl.player_id
 where [annual_income($)] >= 150000 
 and using_casino_app IN ('Monthly','Yearly','Once','Never')
 order by [annual_income($)] desc
-
--- participation in tournaments
-
-select * from preferences
-
-with likely 
-as
-(
-select
-count(participation_slot_tournaments) as slot_likely
-from preferences
-where participation_slot_tournaments = 'Likely'
-)
-select 
-slot_likely,
-slot_likely/count(participation_slot_tournaments)
-from likely
-
-with unlikely 
-as(
-select
-count(participation_slot_tournaments) as slot_unlikely
-from preferences
-where participation_slot_tournaments = 'Unlikely'
-)
-select * from unlikely
 
 -- clients categories
 
