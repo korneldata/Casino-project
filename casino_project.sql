@@ -99,7 +99,7 @@ group by participation_bingo_tournaments
 order by perc_votes desc
 
 
--- clients categories
+-- clients categories (pt 4)
 
 with tiles
 as (
@@ -123,7 +123,7 @@ from tiles
 )
 select * from categories 
 
--- clients' spending categories
+-- clients' spending categories (pt 5)
 
 select player_id,
 format(([dining_spending_per_stay($)]/[overall_spending_per_stay($)]),'P') as dining_perc,
@@ -133,7 +133,7 @@ format(([casino_services_spending_per_stay($)]/[overall_spending_per_stay($)]),'
 from spending
 order by player_id desc
 
--- quick access to clients' subscription options
+-- quick access to clients' subscription options (pt 6)
 
 create procedure PlayerSubscr 
 @FirstName nvarchar(50),
